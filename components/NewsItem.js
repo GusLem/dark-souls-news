@@ -1,11 +1,13 @@
 import moment from 'moment';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
 const NewsItem = ({item}) => {
 
     const {title, url, source, publishedAt, urlToImage} = item;
 
+    const navigation = useNavigation();
     return (
         <TouchableOpacity style={styles.container} onPress={() => navigation.push('News',{url: url})}>
             <View style={styles.imghead}>

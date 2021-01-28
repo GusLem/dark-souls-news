@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import HeaderNews from './components/HeaderNews';
-import NewsItem from './components/NewsItem';
+import HeaderNews from '../components/HeaderNews';
+import NewsItem from '../components/NewsItem';
 
 export default function Home() {
 
