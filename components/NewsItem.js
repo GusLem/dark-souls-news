@@ -4,10 +4,10 @@ import { Image, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, Vi
 
 const NewsItem = ({item}) => {
 
-    const {title, source, publishedAt, urlToImage} = item;
+    const {title, url, source, publishedAt, urlToImage} = item;
 
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => navigation.push('News',{url: url})}>
             <View style={styles.imghead}>
                 <Image source={{uri: urlToImage}} style={styles.img} />
                 <View style={styles.container2}>

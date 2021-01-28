@@ -1,38 +1,18 @@
-import axios from 'axios';
-import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import HeaderNews from './components/HeaderNews';
-import NewsItem from './components/NewsItem';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './pages/Home';
+import News from './pages/News';
 
-//49b2b9816a85459f8c26881cbb8a0195
+const Stack = createStackNavigator();
 
 export default function App() {
-
-  const [items,setItem] = useState([])
-
-  const url = 'http://newsapi.org/v2/everything?q=Dark+Souls&apiKey=49b2b9816a85459f8c26881cbb8a0195&pageSize=20';
-
-  useEffect(() => {
-    axios.get(url)
-    .then((res) => {
-        setItem(res.data.articles)
-    });
-  },[]);
-
   return (
-    <View style={styles.hder}>
-      <HeaderNews  />
-      <FlatList data={items} renderItem={({item}) => <NewsItem item={item} />}/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="News" component={News} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  hder: {
-      flex: 1,
-      paddingTop: 30,
-      backgroundColor: 'lightgrey'
-  }
-})
-
